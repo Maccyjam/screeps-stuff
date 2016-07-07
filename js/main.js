@@ -5,11 +5,13 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleBuilderPassive = require('role.builder.passive');
+var roleMaintainerContainer = require('role.maintainer.container');
 
 var HARVESTER_NUMBER = 3;
 var BUILDER_NUMBER = 1;
 var UPGRADER_NUMBER = 2;
 var PASSIVE_BUILDER_NUMBER = 1;
+var CONTAINER_MAINTAINER_NUMBER = 1;
 
 module.exports.loop = function () {
 
@@ -36,6 +38,9 @@ module.exports.loop = function () {
         if (creep.memory.role == 'passivebuilder') {
             roleBuilderPassive.run(creep);
         }
+        if (creep.memory.role == 'containermaintainer') {
+            roleBuilderPassive.run(creep);
+        }
     }
     
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
@@ -60,5 +65,11 @@ module.exports.loop = function () {
     if (passiveBuilders.length < PASSIVE_BUILDER_NUMBER) {
         var newPBuilder = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE], undefined, {role: 'passivebuilder'});
         console.log('Spawning new passivebuilder: ' + newPBuilder);
+    }
+    
+    var containerMaintainers = _.filter(Game.creeps, (creep) => creep.memory.role == 'containermaintainer');
+    if (containerMaintainers.length < CONTAINER_MAINTAINER_NUMBER) {
+        var newCMaintainer = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE], undefined, {role: 'containermaintainer'});
+        console.log('Spawning new containermaintainer: ' + newCMaintainer);
     }
 }

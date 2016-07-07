@@ -44,7 +44,7 @@ var roleHarvester = {
                 // Handle container filling...
                 if (emptyStructures[0].structureType == STRUCTURE_CONTAINER) {
                     if (creep.carry.energy > (creep.carryCapacity / 2)) { // Only fill with half of its energy.
-                        if (creep.transfer(emptyStructures[0], RESOURCE_ENERGY, (creep.carry.energy / 2)) == ERR_NOT_IN_RANGE) {
+                        if (creep.transfer(emptyStructures[0], RESOURCE_ENERGY, 25) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(emptyStructures[0]);
                         } 
                     } else {
