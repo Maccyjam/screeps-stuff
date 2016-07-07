@@ -30,7 +30,7 @@ var roleBuilderPassive = {
                 // Repair Walls.
                 var walls = creep.room.find(FIND_STRUCTURES, {
                     filter: function(object) {
-                        return object.structureType == STRUCTURE_WALL && object.hits < 7500; // Should probably repair to full, but keep this for now.
+                        return object.structureType == STRUCTURE_WALL && object.hits < 75000; // Should probably repair to full, but keep this for now.
                     }
                 });
                 if (walls.length) {

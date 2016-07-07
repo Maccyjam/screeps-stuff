@@ -41,51 +41,27 @@ var roleHarvester = {
                 }
                 
             } else { // If spawn is full...
-                // Handle container filling...
-                if (emptyStructures[0].structureType == STRUCTURE_CONTAINER) {
-                    if (creep.carry.energy > (creep.carryCapacity / 2)) { // Only fill with half of its energy.
-                        if (creep.transfer(emptyStructures[0], RESOURCE_ENERGY, 25) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(emptyStructures[0]);
-                        } 
-                    } else {
-                        // Repair with rest.
-                        if (creep.repair(emptyStructures[0]) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(emptyStructures[0]);
+                if (emptyStructures) {
+                    // Handle container filling...
+                    if (emptyStructures[0].structureType == STRUCTURE_CONTAINER) {
+                        if (creep.carry.energy > (creep.carryCapacity / 2)) { // Only fill with half of its energy.
+                            if (creep.transfer(emptyStructures[0], RESOURCE_ENERGY, 25) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(emptyStructures[0]);
+                            } 
+                        } else {
+                            // Repair with rest.
+                            if (creep.repair(emptyStructures[0]) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(emptyStructures[0]);
+                            }
                         }
                     }
-                }
-                
-                // Fill everything else.
-                if (creep.transfer(emptyStructures[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(emptyStructures[0]);
+
+                    // Fill everything else.
+                    if (creep.transfer(emptyStructures[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(emptyStructures[0]);
+                    }
                 }
             }
-            
-            
-            
-            // if (Game.spawns.Spawn1.energy != Game.spawns.Spawn1.energyCapacity) {
-            //     if(creep.transfer(Game.spawns.Spawn1, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            //         creep.moveTo(Game.spawns.Spawn1);
-            //     }
-            // } else {
-            //     creep.say("Spawn full");
-            //     var extensionsFull = true;
-            //     // Fill up extensions...
-            //     for (var ext in creep.room.find(FIND_STRUCTURES, { filter: (i) => i.structureType == STRUCTURE_EXTENSION })) {
-            //         if (ext.energy != ext.energyCapacity) {
-            //             extensionsFull = false;
-            //             if(creep.transfer(ext, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            //                 creep.moveTo(ext);
-            //             }
-            //         }
-            //     }
-            //     // If extensions full, fill container.
-            //     // if (extensionsFull) {
-            //     //     if(creep.transfer(creep.room.find(['577c209d47c3ef7031ae2ccf'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            //     //         creep.moveTo(creep.room.structures['577c209d47c3ef7031ae2ccf']);
-            //     //     }
-            //     // }
-            // }
         }
         
 	}

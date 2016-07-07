@@ -8,12 +8,12 @@ var roleMaintainerContainer = {
         });
         
         if (creep.carry.energy < creep.carryCapacity) {
-            if (containers[0].transfer(creep) == ERR_NOT_IN_RANGE) {
+            if (containers[0].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(containers[0]);
             }
         }
         
-        if (containers[0].hits != containers[0].hitsMax) {
+        if (containers[0].hits != (containers[0].hitsMax / 4)) {
             if (creep.repair(containers[0]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(containers[0]);
             }

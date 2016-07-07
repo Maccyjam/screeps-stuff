@@ -39,7 +39,7 @@ module.exports.loop = function () {
             roleBuilderPassive.run(creep);
         }
         if (creep.memory.role == 'containermaintainer') {
-            roleBuilderPassive.run(creep);
+            roleMaintainerContainer.run(creep);
         }
     }
     
